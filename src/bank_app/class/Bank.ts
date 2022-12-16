@@ -12,18 +12,13 @@ export class Bank {
     }
         
     addBranch(branch: Branch): boolean {
-        if (this._branches.indexOf(branch) === -1) {
-            this._branches.push(branch);
-            return true;
-        }
-        return false;
+        const hasBranch = this._branches.includes(branch)
+        if(!hasBranch) this._branches.push(branch);
+        return hasBranch;
     }
         
     addCustomer(branch: Branch, customer: Customer): boolean {
-        if (branch.addCustomer(customer)) {
-        return true;
-        }
-        return false;
+        return branch.addCustomer(customer);
     }
         
     addCustomerTransaction(branch: Branch, customerId: string, amount: number): boolean {
